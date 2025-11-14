@@ -1,7 +1,4 @@
 import random
 
 def generate_password():
-    password = ''
-    for i in range(8):
-        password+=chr(random.randint(33,126))
-    return(password)
+    return ''.join(chr(random.randint(33, 126)) for _ in range(8))
