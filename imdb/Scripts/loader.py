@@ -51,4 +51,10 @@ def get_top_gross_years(df):
     df['Gross'] = df['Gross'].str.replace(',', '').astype(float)
     return(df.groupby('Released_Year')['Gross'].sum().sort_values(ascending=False).head(10))
 
-print(get_top_gross_years(df))
+df_actors = df.melt(id_vars=['Series_Title', 'Gross'],value_vars=("Star1","Star2","Star3","Star4"), var_name='Role',value_name='Actor')
+
+df_actors['Gross'] = df['Gross'].str.replace(',', '').astype(float)
+# print(df_actors.groupby('Actor').mean('Gross').sort_values('Gross',ascending=False))
+
+df['Gross'] = df['Gross'].str.replace(',', '').astype(float)
+print(df.groupby('Director')['Gross'].mean().sort_values(ascending=False))
