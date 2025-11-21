@@ -7,12 +7,13 @@ Un mot de passe est généré en continu jusqu’à ce qu’il respecte **toutes
 
 ## 📁 Structure du projet
 
+```
 ├── generator.py
 ├── validator.py
 ├── main.py
 ├── test_generator.py
 └── test_validator.py
-
+```
 
 ---
 
@@ -73,14 +74,8 @@ votre nouveau mot de passe est :  "7kzX4'X
 ```
 ### 🎯 Objectif du projet
 
-Ce projet peut servir :
+Ce projet m'a permis de :
 
-d’exercice sur les expressions régulières avancées
+m'exercer aux expressions régulières avancées
 
-de démonstration de tests unitaires
-
-d'exemple de séparation logique entre génération, validation et exécution
-
-d’introduction à la gestion de flux génératifs (via iter() et next())
-
-Bien qu’il ne soit pas destiné à un usage de sécurité en production, il illustre clairement un pipeline complet de génération/validation.
+m'exercer sur la bibliothèque Pytest
