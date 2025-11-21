@@ -26,7 +26,7 @@ Top 10 movies per decade.
 
 Correlation between votes and gross.
 
-Movies with high votes but low ratings (overhyped movies).
+    Movies with high votes but low ratings (overhyped movies).
 
 Movies with low votes but high ratings (hidden gems).
 
