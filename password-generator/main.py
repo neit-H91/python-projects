@@ -1,12 +1,6 @@
 import generator
 import validator
 
-password = ''
+password = next(temp for temp in iter(generator.generate_password, None) if validator.password_validator(temp))
 
-while True:
-    temp = generator.generate_password()
-    if validator.password_validator(temp):
-        password = temp
-        break
-
-print(f'votre nouveau mot de passe {password}')
+print(f'votre nouveau mot de passe est :  {password}')
