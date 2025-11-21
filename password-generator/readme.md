@@ -79,3 +79,5 @@ Ce projet m'a permis de :
 m'exercer aux expressions régulières avancées
 
 m'exercer sur la bibliothèque Pytest
+
+en apprendre toujours plus sur Python
