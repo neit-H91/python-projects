@@ -1,0 +1,134 @@
+2025-11-24 11:47:59,222 - INFO - Schema check started.
+2025-11-24 11:47:59,222 - ERROR - Schema check failed: Columns do not match expected schema.
+2025-11-24 11:47:59,222 - INFO - Data type validation started.
+2025-11-24 11:47:59,223 - INFO - Column 'Poster_Link' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'Series_Title' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'Released_Year' type check passed: Expected and actual type is 'int64'.
+2025-11-24 11:47:59,223 - INFO - Column 'Certificate' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'Runtime' type check passed: Expected and actual type is 'int64'.
+2025-11-24 11:47:59,223 - INFO - Column 'Genre' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'IMDB_Rating' type check passed: Expected and actual type is 'float64'.
+2025-11-24 11:47:59,223 - INFO - Column 'Overview' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'Meta_score' type check passed: Expected and actual type is 'float64'.
+2025-11-24 11:47:59,223 - INFO - Column 'Director' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'Star1' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'Star2' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'Star3' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'Star4' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:47:59,223 - INFO - Column 'No_of_Votes' type check passed: Expected and actual type is 'int64'.
+2025-11-24 11:47:59,223 - INFO - Column 'Gross' type check passed: Expected and actual type is 'float64'.
+2025-11-24 11:47:59,224 - ERROR - Column 'Number_of_Movies' type check failed: Expected 'None', but got 'int64'.
+2025-11-24 11:47:59,224 - INFO - Date check started.
+2025-11-24 11:47:59,224 - INFO - Date check passed: All dates are within the valid range.
+2025-11-24 11:47:59,224 - INFO - IMDB rating check started.
+2025-11-24 11:47:59,224 - INFO - IMDB rating check passed: All ratings are within 0-10.
+2025-11-24 11:47:59,225 - INFO - Meta score check started.
+2025-11-24 11:47:59,234 - ERROR - Meta score check failed: Invalid rows found:
+                                           Poster_Link                   Series_Title  ...       Gross Number_of_Movies
+20   https://m.media-amazon.com/images/M/MV5BOTc2ZT...                Soorarai Pottru  ...         NaN                1
+54   https://m.media-amazon.com/images/M/MV5BNWJhMD...      Ayla: The Daughter of War  ...         NaN                1
+55   https://m.media-amazon.com/images/M/MV5BY2FiMT...                   Vikram Vedha  ...         NaN                1
+57   https://m.media-amazon.com/images/M/MV5BMTQ4Mz...                         Dangal  ...  12391761.0                1
+65   https://m.media-amazon.com/images/M/MV5BMDhjZW...               Taare Zameen Par  ...   1223869.0                1
+..                                                 ...                            ...  ...         ...              ...
+872  https://m.media-amazon.com/images/M/MV5BMTU5NT...  The Day the Earth Stood Still  ...         NaN                1
+874  https://m.media-amazon.com/images/M/MV5BYWUxMz...                          Gilda  ...         NaN                1
+899  https://m.media-amazon.com/images/M/MV5BNGMxZj...                      El cuerpo  ...         NaN                1
+909  https://m.media-amazon.com/images/M/MV5BMjI2OD...                      Celda 211  ...         NaN                1
+913  https://m.media-amazon.com/images/M/MV5BMzc0Zm...                      Die Welle  ...         NaN                1
+
+[157 rows x 17 columns]
+2025-11-24 11:47:59,234 - INFO - Uniqueness check started.
+2025-11-24 11:47:59,234 - INFO - Uniqueness check passed: Combination of columns ['Series_Title', 'Released_Year'] is unique.
+2025-11-24 11:47:59,234 - INFO - Runtime check started.
+2025-11-24 11:47:59,235 - INFO - Runtime check passed: All values in column Runtime are positive.
+2025-11-24 11:47:59,235 - INFO - Gross check started.
+2025-11-24 11:47:59,235 - INFO - Gross check passed: All values in column Gross are non-negative.
+2025-11-24 11:47:59,235 - INFO - Null check started.
+2025-11-24 11:47:59,236 - INFO - Null counts: 
+Poster_Link           0
+Series_Title          0
+Released_Year         0
+Certificate         101
+Runtime               0
+Genre                 0
+IMDB_Rating           0
+Overview              0
+Meta_score          157
+Director              0
+Star1                 0
+Star2                 0
+Star3                 0
+Star4                 0
+No_of_Votes           0
+Gross               169
+Number_of_Movies      0
+dtype: int64
+2025-11-24 11:47:59,272 - INFO - Pipeline completed successfully. Cleaned data saved.
+2025-11-24 11:51:58,419 - INFO - Schema check started.
+2025-11-24 11:51:58,420 - INFO - Schema check passed: Columns match expected schema.
+2025-11-24 11:51:58,420 - INFO - Data type validation started.
+2025-11-24 11:51:58,420 - INFO - Column 'Poster_Link' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,420 - INFO - Column 'Series_Title' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,420 - INFO - Column 'Released_Year' type check passed: Expected and actual type is 'int64'.
+2025-11-24 11:51:58,420 - INFO - Column 'Certificate' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,421 - INFO - Column 'Runtime' type check passed: Expected and actual type is 'int64'.
+2025-11-24 11:51:58,421 - INFO - Column 'Genre' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,421 - INFO - Column 'IMDB_Rating' type check passed: Expected and actual type is 'float64'.
+2025-11-24 11:51:58,421 - INFO - Column 'Overview' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,421 - INFO - Column 'Meta_score' type check passed: Expected and actual type is 'float64'.
+2025-11-24 11:51:58,421 - INFO - Column 'Director' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,421 - INFO - Column 'Star1' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,421 - INFO - Column 'Star2' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,421 - INFO - Column 'Star3' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,421 - INFO - Column 'Star4' type check passed: Expected and actual type is 'object'.
+2025-11-24 11:51:58,421 - INFO - Column 'No_of_Votes' type check passed: Expected and actual type is 'int64'.
+2025-11-24 11:51:58,421 - INFO - Column 'Gross' type check passed: Expected and actual type is 'float64'.
+2025-11-24 11:51:58,421 - INFO - Column 'Number_of_Movies' type check passed: Expected and actual type is 'int64'.
+2025-11-24 11:51:58,422 - INFO - Date check started.
+2025-11-24 11:51:58,422 - INFO - Date check passed: All dates are within the valid range.
+2025-11-24 11:51:58,422 - INFO - IMDB rating check started.
+2025-11-24 11:51:58,422 - INFO - IMDB rating check passed: All ratings are within 0-10.
+2025-11-24 11:51:58,422 - INFO - Meta score check started.
+2025-11-24 11:51:58,431 - ERROR - Meta score check failed: Invalid rows found:
+                                           Poster_Link                   Series_Title  ...       Gross Number_of_Movies
+20   https://m.media-amazon.com/images/M/MV5BOTc2ZT...                Soorarai Pottru  ...         NaN                1
+54   https://m.media-amazon.com/images/M/MV5BNWJhMD...      Ayla: The Daughter of War  ...         NaN                1
+55   https://m.media-amazon.com/images/M/MV5BY2FiMT...                   Vikram Vedha  ...         NaN                1
+57   https://m.media-amazon.com/images/M/MV5BMTQ4Mz...                         Dangal  ...  12391761.0                1
+65   https://m.media-amazon.com/images/M/MV5BMDhjZW...               Taare Zameen Par  ...   1223869.0                1
+..                                                 ...                            ...  ...         ...              ...
+872  https://m.media-amazon.com/images/M/MV5BMTU5NT...  The Day the Earth Stood Still  ...         NaN                1
+874  https://m.media-amazon.com/images/M/MV5BYWUxMz...                          Gilda  ...         NaN                1
+899  https://m.media-amazon.com/images/M/MV5BNGMxZj...                      El cuerpo  ...         NaN                1
+909  https://m.media-amazon.com/images/M/MV5BMjI2OD...                      Celda 211  ...         NaN                1
+913  https://m.media-amazon.com/images/M/MV5BMzc0Zm...                      Die Welle  ...         NaN                1
+
+[157 rows x 17 columns]
+2025-11-24 11:51:58,432 - INFO - Uniqueness check started.
+2025-11-24 11:51:58,432 - INFO - Uniqueness check passed: Combination of columns ['Series_Title', 'Released_Year'] is unique.
+2025-11-24 11:51:58,432 - INFO - Runtime check started.
+2025-11-24 11:51:58,432 - INFO - Runtime check passed: All values in column Runtime are positive.
+2025-11-24 11:51:58,432 - INFO - Gross check started.
+2025-11-24 11:51:58,433 - INFO - Gross check passed: All values in column Gross are non-negative.
+2025-11-24 11:51:58,433 - INFO - Null check started.
+2025-11-24 11:51:58,433 - INFO - Null counts: 
+Poster_Link           0
+Series_Title          0
+Released_Year         0
+Certificate         101
+Runtime               0
+Genre                 0
+IMDB_Rating           0
+Overview              0
+Meta_score          157
+Director              0
+Star1                 0
+Star2                 0
+Star3                 0
+Star4                 0
+No_of_Votes           0
+Gross               169
+Number_of_Movies      0
+dtype: int64
+2025-11-24 11:51:58,471 - INFO - Pipeline completed successfully. Cleaned data saved.

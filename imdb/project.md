@@ -1,87 +1,79 @@
-To do
+# Projet Pipeline ETL pour les Données IMDb
 
-Films : 
-TOP 10 best ratings (meta + imdb)
-Top 10 gross
-Top 10 Most Voted
+Ce projet implémente un pipeline ETL (Extract, Transform, Load) complet pour le traitement et l'analyse des données de films IMDb. Il transforme des données brutes en ensembles de données propres et analysés, prêts pour l'exploitation et les requêtes.
 
-Rating distribution
-Genre distribution
-Rating / genre
-Rating / director (top 10)
-Director with most movies
-Top 10 movie per genre 
-TOP 5 Movie per director
-Years with best rating
-Years with most gross
+## Architecture du Pipeline
 
-Categories of New Query Ideas for IMDb Top 1000
-1. Ratings
+### 1. Extraction et Validation (Scripts/extract.py)
+- **Chargement des données** : Import des fichiers CSV bruts depuis `Data/raw/`
+- **Nettoyage initial** : Conversion des colonnes gross et runtime (suppression des formats texte)
+- **Validation des données** :
+  - Vérification du schéma (colonnes attendues)
+  - Validation des types de données
+  - Contrôle des plages de valeurs (années, notes, scores)
+  - Vérification de l'unicité (Titre et année de sortie du film)
+  - Contrôle des valeurs positives/négatives
+  - Détection des valeurs nulles
 
-Rating trends over decades.
+### 2. Transformation (Scripts/transform.py)
+- **Ajout de colonnes dérivées** :
+  - Colonne `Decade` : Groupe les films par décennie
+  - Colonne `Rating` : Moyenne pondérée des notes IMDb et Metacritic
+- **Création de nouveaux DataFrames** :
+  - Explosion des genres pour l'analyse par genre
+  - Fusion des colonnes d'acteurs pour l'analyse par acteur
 
-Top 10 movies per decade.
+### 3. Chargement (pipeline.py)
+- Sauvegarde des données nettoyées dans `Data/cleaned/`
+- Génération de plusieurs vues :
+  - `cleaned_imdb.csv` : Données principales transformées
+  - `cleaned_imdb_genres.csv` : Films explosés par genre
+  - `cleaned_imdb_actors.csv` : Données sur les acteurs
 
-2. Votes
+### 4. Logging (Scripts/log.py)
+- Journalisation complète de toutes les étapes du pipeline
+- Logs enregistrés dans `Logs/pipeline_{dd_mm_yyyy}.log` (avec la date actuelle au format dd_mm_yyyy)
+- Niveaux d'erreur pour identifier les problèmes de données
 
-Correlation between votes and gross.
+## Structure du Projet
 
-    Movies with high votes but low ratings (overhyped movies).
+```
+/imdb/
+├── Data/
+│   ├── raw/
+│   │   └── imdb_top_1000.csv
+│   └── cleaned/  # Généré par le pipeline
+├── Logs/         # Logs du pipeline
+├── Scripts/
+│   ├── extract.py    # Extraction et validation
+│   ├── transform.py  # Transformations
+│   └── log.py        # Fonctions de logging
+├── pipeline.py       # Script principal d'exécution
+├── requirements.txt  # Dépendances Python
+├── .python-version   # Version pyenv
+└── project.md        # Ce fichier
+```
 
-Movies with low votes but high ratings (hidden gems).
+## Installation et Utilisation
 
-3. Gross / Box Office
+1. **Environnement** : Le projet utilise pyenv pour gérer les versions Python
+2. **Installation des dépendances** :
+   ```
+   pip install -r requirements.txt
+   ```
+3. **Exécution du pipeline** :
+   ```
+   python pipeline.py
+   ```
 
-Movies with highest gross per genre.
+## Données Traitées
 
-Movies with highest gross per decade.
+- **Source** : `imdb_top_1000.csv` (1000 films du top IMDb)
+- **Colonnes principales** : Titre, Année, Genre, Notes, Directeur, Acteurs, Recettes, etc.
+- **Sorties** : Données nettoyées et analyses prêtes pour dashboard ou requêtes
 
-Average gross by director.
+## Technologies Utilisées
 
-Movies with low gross but high rating.
-
-4. Directors
-
-Directors with the most movies above 8.5 rating.
-
-Directors with highest average gross.
-
-Directors with consistently high-rated movies.
-
-5. Genres
-
-Most common genre combinations.
-
-Genres with highest average rating.
-
-Genres with highest average gross.
-
-Top-rated movies in less common genres.
-
-Genre trends over decades (e.g., rise of superhero films).
-
-6. Temporal Trends
-
-Average runtime of movies over decades.
-
-Number of movies released per decade.
-
-Years with the most top-rated movies.
-
-Longest streak of high-rated movies per director.
-
-Popularity of genres over time.
-
-7. Movie Attributes
-
-Movies with longest runtime.
-
-Movies with shortest runtime.
-
-Movies with unusual release months (e.g., January vs July).
-
-8. Fun / Miscellaneous
-
-Most reused actors in top 1000 movies.
-
-Movies with highest ratio of votes to gross.
+- **Python** avec pyenv pour la gestion des versions
+- **Pandas** et **NumPy** pour le traitement des données
+- **Logging** Python pour le suivi des opérations
