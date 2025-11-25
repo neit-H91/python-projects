@@ -1,0 +1,32 @@
+Hey kiddo! This is gui_form.py explained easy.
+
+Imagine you have a magic box that pops up on your computer screen. That's what this code makes!
+
+First, we bring in helpers (like toys from a toy box):
+- sys: Helps with computer stuff.
+- PyQt6 things: Special toys for making windows and buttons and stuff.
+- sqlalchemy stuff: Toys for talking to the animal memory box (database).
+- Our own toys from example.py: Like bricks for the memory box.
+
+Now, the main toy is called AnimalForm. It's a little window you can see.
+When we make it (in __init__):
+- Set the window title (like naming your toy).
+- Make it 300 wide by 200 tall, and put it at spot 100,100 on screen.
+- Connect to the animal database (test.db), and make sure the tables are ready (like setting up the toy box).
+- Start a session (like opening the toy box to play).
+- Put in some starter toys if needed: Add dogs, cats, and owners if there are none.
+
+Then, we make the inside of the window (layout):
+- Ask for the animal's name: A box to type the pet's name.
+- Choose the animal type (specie): A list to pick dog or cat, filled from the database.
+- Choose the owner: Another list with owners' names, from the database.
+- A button to save: When you click it, it puts the new animal in the memory box.
+
+There are helper things:
+- add_initial_data: If no animals or owners, add some so you can play.
+- load_species: Fill the animal type list with what's in the memory box.
+- load_owners: Fill the owner list.
+- save_animal: Check you typed everything, then save the pet to the database and clear the name box.
+
+At the end, if you run the file, it makes the app (the magic that runs windows), makes the AnimalForm window, shows it, and waits for you to do things until you close it.
+

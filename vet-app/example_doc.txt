@@ -1,0 +1,38 @@
+Hi there, little explorer! This is example.py explained simple, like a fun story.
+
+First, we bring in our toys:
+- create_engine: A scooter that takes us to the memory box (database).
+- Column, Integer, etc.: Bricks to build tables in the memory box.
+- declarative_base: The boss builder who makes models.
+- sessionmaker: A key to open and use the memory box.
+- relationship: Strings to connect toys together.
+- joinedload: A helper to bring connected toys along.
+- datetime: A clock for times.
+
+Base = declarative_base() is like a big toolbox where we put our building plans (models).
+
+Now, we make the building plans for our animal world:
+- Specie: Just a name (like dog or cat).
+- Owner: Just a name.
+- Medicine: Just a name.
+- Animal: Name, and which specie and owner (using strings to connect).
+- Appointment: Animal and owner and time when they meet (special key made from all three).
+- History: Animal, medicine, and time; connected to animal and medicine.
+
+Then, the engine connects to the file test.db (like finding the memory box under the bed).
+
+We drop all tables (clean up old ones) and build new ones (like setting up new toy shelves).
+
+Session is our key to play with the memories.
+
+Next, if there are no species, we add Dog and Cat.
+If no owners, add John Doe and Jane Smith.
+Then, add a dog named Rex owned by John.
+Then, add a history: Rex got Aspirin medicine today.
+
+Finally, we look at the first history, and bring along the animal and medicine (joinedload, so it's all together).
+Then, print a message: "Medicine 'Aspirin' given to 'Rex' on [time]"
+
+That's it! Like writing a story and reading it back.
+
+The memory box remembers pets, owners, doctors' visits, and medicines given. You can use this to store and find info about animals!
