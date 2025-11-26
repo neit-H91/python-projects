@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Appointment List{% endblock %}
+{% block extra_styles %}
+.appointment-past { color: #666; opacity: 0.7; }
+.appointment-upcoming { font-weight: bold; }
+.appointment-today { color: #FF6B6B; font-weight: bold; }
+{% endblock %}
+{% block content %}
+
+    <h1>All Appointments</h1>
+
+    {% if appointments %}
+        <table>
+            <tr>
+                <th>Date & Time</th>
+                <th>Animal</th>
+                <th>Owner</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for appointment in appointments %}
+            <tr class="{% if appointment.date_time|date:'Y-m-d' == 'now'|date:'Y-m-d' %}appointment-today{% elif appointment.date_time|date:'Y-m-d' < 'now'|date:'Y-m-d' %}appointment-past{% else %}appointment-upcoming{% endif %}">
+                <td>{{ appointment.date_time|date:"M j, Y H:i" }}</td>
+                <td>{{ appointment.animal.name }}</td>
+                <td>{% if appointment.owner %}{{ appointment.owner.first_name }} {{ appointment.owner.last_name }}{% else %}N/A{% endif %}</td>
+                <td>{{ appointment.reason }}</td>
+                <td>
+                    {% if appointment.date_time|date:'Y-m-d' < 'now'|date:'Y-m-d' %}
+                        Completed
+                    {% elif appointment.date_time|date:'Y-m-d' == 'now'|date:'Y-m-d' %}
+                        Today
+                    {% else %}
+                        Upcoming
+                    {% endif %}
+                </td>
+                <td><a href="{% url 'appointment_detail' appointment.pk %}">View Details</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p style="color: #666; font-style: italic;">No appointments scheduled.</p>
+    {% endif %}
+{% endblock %}
