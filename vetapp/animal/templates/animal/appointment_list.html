@@ -8,8 +8,12 @@
 {% block content %}
 
     <h1>All Appointments</h1>
+    {% if is_vet or is_secretary %}
+        <p><a href="/admin/animal/appointment/" class="admin-button">Manage Appointments in Admin</a></p>
+    {% endif %}
+    <p><a href="/" class="admin-button">Go back to Dashboard</a></p>
 
-    {% if appointments %}
+    {% if page_obj.object_list %}
         <table>
             <tr>
                 <th>Date & Time</th>
@@ -19,7 +23,7 @@
                 <th>Status</th>
                 <th>Action</th>
             </tr>
-            {% for appointment in appointments %}
+            {% for appointment in page_obj %}
             <tr class="{% if appointment.date_time|date:'Y-m-d' == 'now'|date:'Y-m-d' %}appointment-today{% elif appointment.date_time|date:'Y-m-d' < 'now'|date:'Y-m-d' %}appointment-past{% else %}appointment-upcoming{% endif %}">
                 <td>{{ appointment.date_time|date:"M j, Y H:i" }}</td>
                 <td>{{ appointment.animal.name }}</td>
@@ -34,10 +38,27 @@
                         Upcoming
                     {% endif %}
                 </td>
-                <td><a href="{% url 'appointment_detail' appointment.pk %}">View Details</a></td>
+                <td><a href="{% url 'appointment_detail' appointment.pk %}" class="action-btn">View Details</a></td>
             </tr>
             {% endfor %}
         </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     {% else %}
         <p style="color: #666; font-style: italic;">No appointments scheduled.</p>
     {% endif %}

@@ -5,6 +5,7 @@ from django.db import models
 from django.utils.safestring import mark_safe
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
+from django.core.paginator import Paginator
 from .models import Animal, Owner, Specie, WeightEntry, Appointment, Medicine, Prescription
 
 @login_required
@@ -51,6 +52,9 @@ def dashboard(request):
 def animal_detail(request, id):
     try:
         animal = Animal.objects.get(pk=id)
+        user = request.user
+        is_vet = user.is_superuser
+        is_secretary = user.groups.filter(name='Secretaries').exists()
         # Get weight entries ordered by date for chart
         weight_entries = animal.weightentry_set.order_by('date')
 
@@ -62,7 +66,9 @@ def animal_detail(request, id):
             'animal': animal,
             'weight_entries': weight_entries,
             'dates_json': mark_safe(json.dumps(dates)),
-            'weights_json': mark_safe(json.dumps(weights))
+            'weights_json': mark_safe(json.dumps(weights)),
+            'is_vet': is_vet,
+            'is_secretary': is_secretary
         }
         return render(request, 'animal/animal_detail.html', context)
     except Animal.DoesNotExist:
@@ -70,13 +76,25 @@ def animal_detail(request, id):
 
 @login_required
 def animal_list(request):
+    user = request.user
+    is_vet = user.is_superuser
+    is_secretary = user.groups.filter(name='Secretaries').exists()
     animals = Animal.objects.all()
-    return render(request, 'animal/animal_list.html', {'animals': animals})
+    paginator = Paginator(animals, 10)  # Show 10 animals per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'animal/animal_list.html', {'page_obj': page_obj, 'is_vet': is_vet, 'is_secretary': is_secretary})
 
 @login_required
 def owner_list(request):
+    user = request.user
+    is_vet = user.is_superuser
+    is_secretary = user.groups.filter(name='Secretaries').exists()
     owners = Owner.objects.all()
-    return render(request, 'animal/owner_list.html', {'owners': owners})
+    paginator = Paginator(owners, 10)  # Show 10 owners per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'animal/owner_list.html', {'page_obj': page_obj, 'is_vet': is_vet, 'is_secretary': is_secretary})
 
 @login_required
 def owner_detail(request, id):
@@ -95,8 +113,14 @@ def owner_detail(request, id):
 
 @login_required
 def medicine_list(request):
+    user = request.user
+    is_vet = user.is_superuser
+    is_secretary = user.groups.filter(name='Secretaries').exists()
     medicines = Medicine.objects.all()
-    return render(request, 'animal/medicine_list.html', {'medicines': medicines})
+    paginator = Paginator(medicines, 10)  # Show 10 medicines per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'animal/medicine_list.html', {'page_obj': page_obj, 'is_vet': is_vet, 'is_secretary': is_secretary})
 
 @login_required
 def medicine_detail(request, id):
@@ -113,8 +137,14 @@ def medicine_detail(request, id):
 
 @login_required
 def appointment_list(request):
+    user = request.user
+    is_vet = user.is_superuser
+    is_secretary = user.groups.filter(name='Secretaries').exists()
     appointments = Appointment.objects.select_related('animal', 'owner').order_by('date_time')
-    return render(request, 'animal/appointment_list.html', {'appointments': appointments})
+    paginator = Paginator(appointments, 10)  # Show 10 appointments per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'animal/appointment_list.html', {'page_obj': page_obj, 'is_vet': is_vet, 'is_secretary': is_secretary})
 
 @login_required
 def appointment_detail(request, id):
@@ -126,3 +156,14 @@ def appointment_detail(request, id):
         return render(request, 'animal/appointment_detail.html', context)
     except Appointment.DoesNotExist:
         return render(request, 'animal/appointment_detail.html', {'error': 'Appointment not found'})
+
+@login_required
+def weight_entry_list(request):
+    user = request.user
+    is_vet = user.is_superuser
+    is_secretary = user.groups.filter(name='Secretaries').exists()
+    weight_entries = WeightEntry.objects.select_related('animal').order_by('-date')
+    paginator = Paginator(weight_entries, 10)  # Show 10 weight entries per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'animal/weight_entry_list.html', {'page_obj': page_obj, 'is_vet': is_vet, 'is_secretary': is_secretary})

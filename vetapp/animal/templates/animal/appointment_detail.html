@@ -3,8 +3,6 @@
 {% block extra_styles %}
 .appointment-card { background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ddd; }
 .animal-info { background-color: white; padding: 15px; border-radius: 5px; margin-top: 10px; border: 1px solid #eee; }
-.btn-back { background-color: #1976d2; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-bottom: 20px; }
-.btn-back:hover { background-color: #1565c0; }
 .detail-row { margin-bottom: 10px; }
 .label { font-weight: bold; color: #333; }
 .value { color: #555; }
@@ -59,7 +57,7 @@
             <h2>Animal Information</h2>
             <div class="detail-row">
                 <span class="label">Name:</span>
-                <span class="value"><a href="{% url 'animal_detail' appointment.animal.pk %}">{{ appointment.animal.name }}</a></span>
+                <span class="value"><a href="{% url 'animal_detail' appointment.animal.pk %}" class="action-btn">{{ appointment.animal.name }}</a></span>
             </div>
             <div class="detail-row">
                 <span class="label">Species:</span>
@@ -69,7 +67,7 @@
                 <span class="label">Owner:</span>
                 <span class="value">
                     {% if appointment.owner %}
-                        <a href="{% url 'owner_detail' appointment.owner.pk %}">{{ appointment.owner.first_name }} {{ appointment.owner.last_name }}</a>
+                        <a href="{% url 'owner_detail' appointment.owner.pk %}" class="action-btn">{{ appointment.owner.first_name }} {{ appointment.owner.last_name }}</a>
                         {% if appointment.owner.email %}(<a href="mailto:{{ appointment.owner.email }}">{{ appointment.owner.email }}</a>){% endif %}
                         {% if appointment.owner.phone %} • <a href="tel:{{ appointment.owner.phone }}">{{ appointment.owner.phone }}</a>{% endif %}
                     {% else %}

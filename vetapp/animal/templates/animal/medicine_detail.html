@@ -3,8 +3,6 @@
 {% block extra_styles %}
 .medicine-card { background-color: #e8f5e8; padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #4caf50; }
 .section { background-color: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #eee; }
-.btn-back { background-color: #1976d2; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-bottom: 20px; }
-.btn-back:hover { background-color: #1565c0; }
 .price { font-size: 1.2em; font-weight: bold; color: #2e7d32; }
 {% endblock %}
 {% block content %}
@@ -42,10 +40,10 @@
                     </tr>
                     {% for prescription in prescriptions %}
                     <tr>
-                        <td><a href="{% url 'animal_detail' prescription.animal.pk %}">{{ prescription.animal.name }}</a></td>
+                        <td><a href="{% url 'animal_detail' prescription.animal.pk %}" class="action-btn">{{ prescription.animal.name }}</a></td>
                         <td>
                             {% if prescription.animal.owner %}
-                                <a href="{% url 'owner_detail' prescription.animal.owner.pk %}">{{ prescription.animal.owner.first_name }} {{ prescription.animal.owner.last_name }}</a>
+                                <a href="{% url 'owner_detail' prescription.animal.owner.pk %}" class="action-btn">{{ prescription.animal.owner.first_name }} {{ prescription.animal.owner.last_name }}</a>
                             {% else %}
                                 Stray Animal
                             {% endif %}

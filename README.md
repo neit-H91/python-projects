@@ -15,13 +15,6 @@ An ETL (Extract, Transform, Load) pipeline for processing and analyzing IMDb mov
 
 **Key Technologies:** Pandas, NumPy, Python Logging
 
-**Run:**
-```bash
-cd imdb
-pip install -r requirements.txt
-python pipeline.py
-```
-
 ### 2. Password Generator (`password-generator/`)
 A secure password generation tool with built-in validation.
 
@@ -30,27 +23,33 @@ A secure password generation tool with built-in validation.
 - Validates passwords for security requirements
 - Generates passwords iteratively until all criteria are met
 
-**Run:**
-```bash
-cd password-generator
-python main.py
-```
+### 3. Effectifs Terminale Pipeline (`effectifs-terminal/`)
+A PySpark-based data pipeline for processing French high school enrollment data into a star schema for analytics.
 
-## Getting Started
+**Features:**
+- Downloads and processes enrollment data from French Ministry of Education API
+- Creates star schema with dimension and fact tables (Parquet format)
+- Handles large datasets with distributed processing via Apache Spark
+- Configurable for different school years and processing parameters
 
-### Prerequisites
-- Python 3.8+ (each project may specify a version in `.python-version`)
-- pip for package management
-- pyenv recommended for version management
+**Key Technologies:** PySpark, Pandas, Apache Parquet
 
-### Adding New Projects
-1. Create a new directory for your project
-2. Include a clear README.md with setup and usage instructions
-3. Add any required dependencies and configuration files
-4. Update this main README to include your new project
+### 4. Veterinary Clinic Management System (`vetapp/`)
+A Django-based web application for managing veterinary clinic operations.
+
+**Features:**
+- Animal and owner management with detailed records
+- Appointment scheduling and tracking
+- Medicine inventory and prescription management
+- Weight tracking for animals over time
+- Dashboard views for clinic operations
+
+**Key Technologies:** Django, SQLite, HTML/CSS
 
 ## Structure
 ```
 ├── imdb/                 # IMDb data processing pipeline
 ├── password-generator/   # Secure password generation tool
+├── effectifs-terminal/   # French education data pipeline
+├── vetapp/               # Veterinary clinic management system
 └── README.md            # This file

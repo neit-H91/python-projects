@@ -12,10 +12,18 @@
     {% if error %}
         <h1>{{ error }}</h1>
     {% else %}
+        <div style="margin-bottom: 20px;">
+            <a href="{% url 'animal_list' %}" class="btn-back">← Back to Animals</a>
+            <a href="{% url 'dashboard' %}" style="margin-left: 10px;" class="btn-back">← Back to Dashboard</a>
+        </div>
+
         <div class="animal-info">
             <h1>{{ animal.name }}</h1>
+            {% if is_vet or is_secretary %}
+                <p><a href="/admin/animal/animal/{{ animal.pk }}/change/" target="_blank" class="admin-button">Edit Animal Details in Admin</a></p>
+            {% endif %}
             <p><strong>Species:</strong> {{ animal.specie.name }}</p>
-            <p><strong>Owner:</strong> {% if animal.owner %}{{ animal.owner.first_name }} {{ animal.owner.last_name }}{% else %}Stray{% endif %}</p>
+            <p><strong>Owner:</strong> {% if animal.owner %}<a href="{% url 'owner_detail' animal.owner.pk %}" class="action-btn">{{ animal.owner.first_name }} {{ animal.owner.last_name }}</a>{% else %}Stray{% endif %}</p>
             <p><strong>Birth Date:</strong> {{ animal.birth_date|date:"M j, Y" }}</p>
         </div>
 

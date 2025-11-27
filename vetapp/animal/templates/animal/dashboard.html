@@ -58,7 +58,7 @@
             <p class="no-data">No upcoming appointments scheduled.</p>
         {% endif %}
         <div style="margin-bottom: 20px; text-align: center;">
-            <a href="{% url 'appointment_list' %}" class="btn-primary" style="margin-left: 10px;">Check Appointments</a>
+            <a href="{% url 'appointment_list' %}" class="btn-primary" target="_blank" style="margin-left: 10px;">Check Appointments</a>
         </div>
     </div>
 
@@ -75,7 +75,7 @@
                 </tr>
                 {% for animal in latest_animals %}
                 <tr>
-                    <td><a href="{% url 'animal_detail' animal.pk %}">{{ animal.name }}</a></td>
+                    <td><a href="{% url 'animal_detail' animal.pk %}" target="_blank" class="action-btn">{{ animal.name }}</a></td>
                     <td>{{ animal.specie.name }}</td>
                     <td>{% if animal.owner %}{{ animal.owner.first_name }} {{ animal.owner.last_name }}{% else %}Stray{% endif %}</td>
                     <td>{{ animal.birth_date|date:"M j, Y" }}</td>
@@ -86,7 +86,7 @@
             <p class="no-data">No animals have been added yet.</p>
         {% endif %}
         <div style="margin-bottom: 20px; text-align: center;">
-            <a href="{% url 'animal_list' %}" class="btn-primary">View All Animals</a>
+            <a href="{% url 'animal_list' %}" class="btn-primary" target="_blank">View All Animals</a>
         </div>
     </div>
 

@@ -40,10 +40,6 @@ class AppointmentAdmin(admin.ModelAdmin):
     ordering = ('-date_time',)
     date_hierarchy = 'date_time'
 
-    def get_queryset(self, request):
-        # Only show appointments for animals with owners
-        return super().get_queryset(request).exclude(owner__isnull=True)
-
 # Register Medicines
 @admin.register(Medicine)
 class MedicineAdmin(admin.ModelAdmin):
