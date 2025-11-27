@@ -1,0 +1,20 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Application Detail - Job Hunt{% endblock %}
+
+{% block content %}
+    <h1>Application Detail</h1>
+    <p><a href="{% url 'add_interview' %}?application={{ application.pk }}" class="button">Add Interview for this Application</a></p>
+
+    <div class="detail">
+        <h2>Job: {{ application.job.title }}</h2>
+        <p><strong>Company:</strong> {{ application.job.company.name }}</p>
+        <p><strong>Application Date:</strong> {{ application.date }}</p>
+        <p><strong>Type:</strong> {{ application.type.name }}</p>
+        <p><strong>Status:</strong> {{ application.status.name }}</p>
+        <p><strong>Platform:</strong> {{ application.platform.name }}</p>
+        <p><strong>Answered:</strong> {{ application.is_answered|yesno:"Yes,No" }}</p>
+        <p><strong>Job Summary:</strong></p>
+        <div class="notes">{{ application.job.resume }}</div>
+    </div>
+{% endblock %}

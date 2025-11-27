@@ -1,0 +1,15 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Interview Detail - Job Hunt{% endblock %}
+
+{% block content %}
+    <h1>Interview Detail</h1>
+
+    <div class="detail">
+        <h2>Job: {{ interview.application.job.title }}</h2>
+        <p><strong>Company:</strong> {{ interview.application.job.company.name }}</p>
+        <p><strong>Date:</strong> {{ interview.date }}</p>
+        <p><strong>Notes:</strong></p>
+        <div class="notes">{{ interview.notes }}</div>
+    </div>
+{% endblock %}

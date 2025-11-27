@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Job Hunt{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0; /* Darker grey background */
+            color: #333;
+        }
+        nav {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            border-bottom: 2px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #28a745; /* Green */
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #e8f5e8; /* Light green background on hover */
+            color: #218838; /* Darker green */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #28a745; /* Green */
+            margin-bottom: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa; /* Light grey */
+            color: #495057;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa; /* Light grey for alternating rows */
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #e8f5e8; /* Light green */
+            border: 1px solid #c3e6cb;
+            text-align: center;
+        }
+        .stat h2 {
+            margin: 0 0 10px 0;
+            color: #28a745;
+        }
+        .stat p {
+            font-size: 2em;
+            margin: 0;
+            font-weight: bold;
+            color: #155724;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 500;
+            color: #495057;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #ffffff;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #28a745;
+            outline: none;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+        }
+        button {
+            padding: 12px 24px;
+            margin-top: 20px;
+            background: #28a745; /* Green */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background: #218838; /* Darker green */
+        }
+        .detail {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+        .notes {
+            white-space: pre-wrap;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+        a {
+            color: #28a745;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px;
+            }
+            nav a {
+                margin-right: 10px;
+                padding: 6px 8px;
+                font-size: 14px;
+            }
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'add_company' %}">Add Company</a>
+        <a href="{% url 'add_job' %}">Add Job</a>
+        <a href="{% url 'add_application' %}">Add Application</a>
+        <a href="{% url 'add_interview' %}">Add Interview</a>
+        <a href="{% url 'applications_list' %}">View Applications</a>
+        <a href="{% url 'interviews_list' %}">View Interviews</a>
+        <a href="{% url 'stats' %}">Stats</a>
+        <a href="/admin/">Admin</a>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

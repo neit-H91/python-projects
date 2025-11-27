@@ -1,0 +1,32 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Interviews List - Job Hunt{% endblock %}
+
+{% block content %}
+    <h1>Interviews List</h1>
+
+    {% if interviews %}
+    <table>
+        <thead>
+            <tr>
+                <th>Job Title</th>
+                <th>Date</th>
+                <th>Notes</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for interview in interviews %}
+            <tr>
+                <td>{{ interview.application.job.title }}</td>
+                <td>{{ interview.date }}</td>
+                <td>{{ interview.notes|truncatechars:50 }}</td>
+                <td><a href="{% url 'interview_detail' interview.pk %}">View Detail</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nothing to show for now.</p>
+    {% endif %}
+{% endblock %}

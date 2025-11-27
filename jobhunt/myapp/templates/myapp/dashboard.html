@@ -1,0 +1,98 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Dashboard - Job Hunt{% endblock %}
+
+{% block content %}
+    <h1>Job Hunt Dashboard</h1>
+
+    <div class="stats">
+        <div class="stat">
+            <h2>Total Jobs</h2>
+            <p>{{ total_jobs }}</p>
+        </div>
+        <div class="stat">
+            <h2>Total Applications</h2>
+            <p>{{ total_applications }}</p>
+        </div>
+        <div class="stat">
+            <h2>Total Interviews</h2>
+            <p>{{ total_interviews }}</p>
+        </div>
+    </div>
+
+    <h2>Latest Jobs</h2>
+    {% if jobs %}
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Post Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.title }}</td>
+                <td>{{ job.company.name }}</td>
+                <td><a href="{{ job.post_link }}" target="_blank">Link</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nothing to show for now.</p>
+    {% endif %}
+
+    <h2>Latest Applications</h2>
+    {% if applications %}
+    <table>
+        <thead>
+            <tr>
+                <th>Job</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Platform</th>
+                <th>Answered</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in applications %}
+            <tr>
+                <td>{{ app.job.title }}</td>
+                <td>{{ app.date }}</td>
+                <td>{{ app.status.name }}</td>
+                <td>{{ app.platform.name }}</td>
+                <td>{{ app.is_answered|yesno:"Yes,No" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nothing to show for now.</p>
+    {% endif %}
+
+    <h2>Upcoming Interviews</h2>
+    {% if interviews %}
+    <table>
+        <thead>
+            <tr>
+                <th>Job</th>
+                <th>Date</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for interview in interviews %}
+            <tr>
+                <td>{{ interview.application.job.title }}</td>
+                <td>{{ interview.date }}</td>
+                <td>{{ interview.notes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nothing to show for now.</p>
+    {% endif %}
+{% endblock %}
