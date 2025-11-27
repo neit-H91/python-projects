@@ -9,13 +9,18 @@
     <div class="detail">
         <h2>Job: {{ application.job.title }}</h2>
         <p><strong>Company:</strong> {{ application.job.company.name }}</p>
+        <p><strong>Company Website:</strong> <a href="{{ application.job.company.website }}" target="_blank">{{ application.job.company.website }}</a></p>
+        <p><strong>Company City:</strong> {{ application.job.company.city.name }}</p>
+        <p><strong>Job Post Link:</strong> <a href="{{ application.job.post_link }}" target="_blank">{{ application.job.post_link }}</a></p>
+        <p><strong>Job Summary:</strong></p>
+        <div class="notes">{{ application.job.resume }}</div>
+
+        <h3>Application Details</h3>
         <p><strong>Application Date:</strong> {{ application.date }}</p>
         <p><strong>Type:</strong> {{ application.type.name }}</p>
         <p><strong>Status:</strong> {{ application.status.name }}</p>
         <p><strong>Platform:</strong> {{ application.platform.name }}</p>
         <p><strong>Answered:</strong> {{ application.is_answered|yesno:"Yes,No" }}</p>
-        <p><strong>Job Summary:</strong></p>
-        <div class="notes">{{ application.job.resume }}</div>
     </div>
 
     <h2>Update Status</h2>

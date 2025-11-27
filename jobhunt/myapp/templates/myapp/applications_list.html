@@ -5,11 +5,17 @@
 {% block content %}
     <h1>Applications List</h1>
 
+    <form method="get" style="margin-bottom: 20px;">
+        <input type="text" name="search" value="{{ search_query }}" placeholder="Search by job title or company..." style="padding: 8px; width: 300px;">
+        <button type="submit" style="padding: 8px 16px;">Search</button>
+    </form>
+
     {% if applications %}
     <table>
         <thead>
             <tr>
                 <th>Job Title</th>
+                <th>Company</th>
                 <th>Date</th>
                 <th>Status</th>
                 <th>Platform</th>
@@ -21,6 +27,7 @@
             {% for app in applications %}
             <tr>
                 <td>{{ app.job.title }}</td>
+                <td>{{ app.job.company.name }}</td>
                 <td>{{ app.date }}</td>
                 <td>{{ app.status.name }}</td>
                 <td>{{ app.platform.name }}</td>

@@ -5,6 +5,11 @@
 {% block content %}
     <h1>Interviews List</h1>
 
+    <form method="get" style="margin-bottom: 20px;">
+        <input type="text" name="search" value="{{ search_query }}" placeholder="Search by job title or company..." style="padding: 8px; width: 300px;">
+        <button type="submit" style="padding: 8px 16px;">Search</button>
+    </form>
+
     {% if interviews %}
     <table>
         <thead>

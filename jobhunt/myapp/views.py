@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Q
 from .models import Job, Application, Interview, Type, Platform, Company
 from .forms import ApplicationForm, JobForm, CompanyForm, InterviewForm, ApplicationUpdateForm
 
@@ -19,8 +20,14 @@ def dashboard(request):
 
 def interviews_list(request):
     interviews = Interview.objects.all().order_by('-date')
+    search_query = request.GET.get('search', '')
+    if search_query:
+        interviews = interviews.filter(
+            Q(application__job__title__icontains=search_query) | Q(application__job__company__name__icontains=search_query)
+        )
     context = {
         'interviews': interviews,
+        'search_query': search_query,
     }
     return render(request, 'myapp/interviews_list.html', context)
 
@@ -33,24 +40,16 @@ def interview_detail(request, pk):
 
 def applications_list(request):
     applications = Application.objects.all().order_by('-date')
+    search_query = request.GET.get('search', '')
+    if search_query:
+        applications = applications.filter(
+            Q(job__title__icontains=search_query) | Q(job__company__name__icontains=search_query)
+        )
     context = {
         'applications': applications,
+        'search_query': search_query,
     }
     return render(request, 'myapp/applications_list.html', context)
-
-def jobs_list(request):
-    jobs = Job.objects.all().order_by('-id')
-    context = {
-        'jobs': jobs,
-    }
-    return render(request, 'myapp/jobs_list.html', context)
-
-def job_detail(request, pk):
-    job = get_object_or_404(Job, pk=pk)
-    context = {
-        'job': job,
-    }
-    return render(request, 'myapp/job_detail.html', context)
 
 def application_detail(request, pk):
     application = get_object_or_404(Application, pk=pk)
