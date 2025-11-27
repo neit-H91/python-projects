@@ -17,4 +17,11 @@
         <p><strong>Job Summary:</strong></p>
         <div class="notes">{{ application.job.resume }}</div>
     </div>
+
+    <h2>Update Status</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
 {% endblock %}

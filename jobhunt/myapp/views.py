@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Job, Application, Interview, Type, Platform, Company
-from .forms import ApplicationForm, JobForm, CompanyForm, InterviewForm
+from .forms import ApplicationForm, JobForm, CompanyForm, InterviewForm, ApplicationUpdateForm
 
 def dashboard(request):
     from django.utils import timezone
@@ -40,8 +40,16 @@ def applications_list(request):
 
 def application_detail(request, pk):
     application = get_object_or_404(Application, pk=pk)
+    if request.method == 'POST':
+        form = ApplicationUpdateForm(request.POST, instance=application)
+        if form.is_valid():
+            form.save()
+            return redirect('application_detail', pk=pk)
+    else:
+        form = ApplicationUpdateForm(instance=application)
     context = {
         'application': application,
+        'form': form,
     }
     return render(request, 'myapp/application_detail.html', context)
 

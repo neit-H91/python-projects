@@ -2,6 +2,10 @@ from django import forms
 from .models import Application, Job, Company, Interview
 
 class ApplicationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['job'].queryset = Job.objects.order_by('-id')
+
     class Meta:
         model = Application
         fields = ['date', 'type', 'job', 'platform', 'status', 'is_answered']
@@ -30,3 +34,8 @@ class InterviewForm(forms.ModelForm):
             'date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
             'notes': forms.Textarea(attrs={'rows': 4}),
         }
+
+class ApplicationUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = ['status', 'is_answered']
