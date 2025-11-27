@@ -1,0 +1,32 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Jobs List - Job Hunt{% endblock %}
+
+{% block content %}
+    <h1>Jobs List</h1>
+
+    {% if jobs %}
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Post Link</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.title }}</td>
+                <td>{{ job.company.name }}</td>
+                <td><a href="{{ job.post_link }}" target="_blank">Link</a></td>
+                <td><a href="{% url 'job_detail' job.pk %}">View Detail</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nothing to show for now.</p>
+    {% endif %}
+{% endblock %}

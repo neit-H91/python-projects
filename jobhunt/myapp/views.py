@@ -38,6 +38,20 @@ def applications_list(request):
     }
     return render(request, 'myapp/applications_list.html', context)
 
+def jobs_list(request):
+    jobs = Job.objects.all().order_by('-id')
+    context = {
+        'jobs': jobs,
+    }
+    return render(request, 'myapp/jobs_list.html', context)
+
+def job_detail(request, pk):
+    job = get_object_or_404(Job, pk=pk)
+    context = {
+        'job': job,
+    }
+    return render(request, 'myapp/job_detail.html', context)
+
 def application_detail(request, pk):
     application = get_object_or_404(Application, pk=pk)
     if request.method == 'POST':
