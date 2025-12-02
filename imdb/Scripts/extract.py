@@ -39,7 +39,7 @@ def imdb_rating_check(df): #checks that imdb ratings are within 0-10
         return invalid_rows
     
 def meta_score_check(df): #checks that metacritics scores are within 0-100 (ignoring NaN as valid)
-    invalid_rows = df[df['meta_score'].notna() & (~df['meta_score'].between(0, 100))]
+    invalid_rows = df[df['Meta_score'].notna() & (~df['Meta_score'].between(0, 100))]
     if invalid_rows.empty:
         return True
     else:

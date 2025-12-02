@@ -1,5 +1,5 @@
 import pandas as pd
-from Scripts import extract, transform, log
+from Scripts import extract, transform, log, cloud
 import logging
 
 
@@ -85,6 +85,8 @@ def main():
         os.makedirs('Data/cleaned')
     df.to_csv('Data/cleaned/cleaned_imdb.csv', index=False)
 
+
+
     # Additional transforms for analysis
     df_exploded = transform.explode_genre(df.copy())
     df_actors = transform.melt_actors(df.copy())
@@ -95,6 +97,26 @@ def main():
     # Log completion
     logger = logging.getLogger('imdb_logger')
     logger.info("Pipeline completed successfully. Cleaned data saved.")
+
+    # Save raw data to bucket
+    cloud.upload_blob("test-pipeline-zach", "Data/raw/imdb_top_1000.csv", "imdb_top_1000.csv")
+
+
+    # Save cleaned data to bucket
+    cloud.upload_blob("test-pipeline-zach", "Data/cleaned/cleaned_imdb.csv", "cleaned_imdb.csv")
+    cloud.upload_blob("test-pipeline-zach", "Data/cleaned/cleaned_imdb_genres.csv", "cleaned_imdb_genres.csv")
+    cloud.upload_blob("test-pipeline-zach", "Data/cleaned/cleaned_imdb_actors.csv", "cleaned_imdb_actors.csv")
+    
+    # Create BigQuery dataset if it doesn't exist
+    cloud.create_bigquery_dataset("imdb_dataset")
+    
+    # Upload data to Bigquerry
+    cloud.load_csv_to_bigquery("test-pipeline-zach", "cleaned_imdb.csv", "imdb_dataset", "movies")
+    cloud.load_csv_to_bigquery("test-pipeline-zach", "cleaned_imdb_genres.csv", "imdb_dataset", "movie_genres")
+    cloud.load_csv_to_bigquery("test-pipeline-zach", "cleaned_imdb_actors.csv", "imdb_dataset", "movie_actors")
+    cloud.load_csv_to_bigquery("test-pipeline-zach", "imdb_top_1000.csv", "imdb_dataset", "raw_movies")
+    
+
 
 if __name__ == "__main__":
     main()

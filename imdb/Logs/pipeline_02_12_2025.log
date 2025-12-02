@@ -1,0 +1,101 @@
+2025-12-02 11:21:30,259 - INFO - Schema check started.
+2025-12-02 11:21:30,259 - INFO - Schema check passed: Columns match expected schema.
+2025-12-02 11:21:30,260 - INFO - Data type validation started.
+2025-12-02 11:21:30,260 - INFO - Column 'Poster_Link' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,260 - INFO - Column 'Series_Title' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,260 - INFO - Column 'Released_Year' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:21:30,260 - INFO - Column 'Certificate' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,261 - INFO - Column 'Runtime' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:21:30,261 - INFO - Column 'Genre' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,261 - INFO - Column 'IMDB_Rating' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:21:30,261 - INFO - Column 'Overview' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,261 - INFO - Column 'Meta_score' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:21:30,261 - INFO - Column 'Director' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,261 - INFO - Column 'Star1' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,261 - INFO - Column 'Star2' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,261 - INFO - Column 'Star3' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,261 - INFO - Column 'Star4' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:21:30,261 - INFO - Column 'No_of_Votes' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:21:30,261 - INFO - Column 'Gross' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:21:30,261 - INFO - Column 'Number_of_Movies' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:21:30,263 - INFO - Date check started.
+2025-12-02 11:21:30,263 - INFO - Date check passed: All dates are within the valid range.
+2025-12-02 11:21:30,263 - INFO - IMDB rating check started.
+2025-12-02 11:21:30,264 - INFO - IMDB rating check passed: All ratings are within 0-10.
+2025-12-02 11:22:00,524 - INFO - Schema check started.
+2025-12-02 11:22:00,524 - INFO - Schema check passed: Columns match expected schema.
+2025-12-02 11:22:00,525 - INFO - Data type validation started.
+2025-12-02 11:22:00,525 - INFO - Column 'Poster_Link' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,525 - INFO - Column 'Series_Title' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,525 - INFO - Column 'Released_Year' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:22:00,525 - INFO - Column 'Certificate' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,526 - INFO - Column 'Runtime' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:22:00,526 - INFO - Column 'Genre' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,526 - INFO - Column 'IMDB_Rating' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:22:00,526 - INFO - Column 'Overview' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,526 - INFO - Column 'Meta_score' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:22:00,526 - INFO - Column 'Director' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,526 - INFO - Column 'Star1' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,526 - INFO - Column 'Star2' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,526 - INFO - Column 'Star3' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,526 - INFO - Column 'Star4' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:00,526 - INFO - Column 'No_of_Votes' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:22:00,526 - INFO - Column 'Gross' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:22:00,526 - INFO - Column 'Number_of_Movies' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:22:00,527 - INFO - Date check started.
+2025-12-02 11:22:00,527 - INFO - Date check passed: All dates are within the valid range.
+2025-12-02 11:22:00,527 - INFO - IMDB rating check started.
+2025-12-02 11:22:00,527 - INFO - IMDB rating check passed: All ratings are within 0-10.
+2025-12-02 11:22:16,393 - INFO - Schema check started.
+2025-12-02 11:22:16,393 - INFO - Schema check passed: Columns match expected schema.
+2025-12-02 11:22:16,393 - INFO - Data type validation started.
+2025-12-02 11:22:16,393 - INFO - Column 'Poster_Link' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'Series_Title' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'Released_Year' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:22:16,394 - INFO - Column 'Certificate' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'Runtime' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:22:16,394 - INFO - Column 'Genre' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'IMDB_Rating' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:22:16,394 - INFO - Column 'Overview' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'Meta_score' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:22:16,394 - INFO - Column 'Director' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'Star1' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'Star2' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'Star3' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'Star4' type check passed: Expected and actual type is 'object'.
+2025-12-02 11:22:16,394 - INFO - Column 'No_of_Votes' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:22:16,394 - INFO - Column 'Gross' type check passed: Expected and actual type is 'float64'.
+2025-12-02 11:22:16,395 - INFO - Column 'Number_of_Movies' type check passed: Expected and actual type is 'int64'.
+2025-12-02 11:22:16,395 - INFO - Date check started.
+2025-12-02 11:22:16,395 - INFO - Date check passed: All dates are within the valid range.
+2025-12-02 11:22:16,396 - INFO - IMDB rating check started.
+2025-12-02 11:22:16,396 - INFO - IMDB rating check passed: All ratings are within 0-10.
+2025-12-02 11:22:16,396 - INFO - Meta score check started.
+2025-12-02 11:22:16,396 - INFO - Meta score check passed: All scores are within 0-100.
+2025-12-02 11:22:16,399 - INFO - Uniqueness check started.
+2025-12-02 11:22:16,399 - INFO - Uniqueness check passed: Combination of columns ['Series_Title', 'Released_Year'] is unique.
+2025-12-02 11:22:16,399 - INFO - Runtime check started.
+2025-12-02 11:22:16,399 - INFO - Runtime check passed: All values in column Runtime are positive.
+2025-12-02 11:22:16,399 - INFO - Gross check started.
+2025-12-02 11:22:16,399 - INFO - Gross check passed: All values in column Gross are non-negative.
+2025-12-02 11:22:16,401 - INFO - Null check started.
+2025-12-02 11:22:16,401 - INFO - Null counts: 
+Poster_Link           0
+Series_Title          0
+Released_Year         0
+Certificate         101
+Runtime               0
+Genre                 0
+IMDB_Rating           0
+Overview              0
+Meta_score          157
+Director              0
+Star1                 0
+Star2                 0
+Star3                 0
+Star4                 0
+No_of_Votes           0
+Gross               169
+Number_of_Movies      0
+dtype: int64
+2025-12-02 11:22:16,474 - INFO - Pipeline completed successfully. Cleaned data saved.
